@@ -34,6 +34,14 @@ namespace TextAdventure
                     Player.Move(arguements);
                     break;
 
+                case "go":
+                    Player.Move(arguements);
+                    break;
+
+                case "walk":
+                    Player.Move(arguements);
+                    break;
+
                 case "look":
                     Player.GetCurrentRoom().DescribeRoom();
                     break;

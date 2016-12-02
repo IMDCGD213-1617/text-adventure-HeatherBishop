@@ -1,0 +1,6 @@
+C:\Users\Games\Desktop\TextAdventure2\TextAdventure\bin\Debug\TextAdventure.exe.config
+C:\Users\Games\Desktop\TextAdventure2\TextAdventure\bin\Debug\TextAdventure.exe
+C:\Users\Games\Desktop\TextAdventure2\TextAdventure\bin\Debug\TextAdventure.pdb
+C:\Users\Games\Desktop\TextAdventure2\TextAdventure\obj\Debug\TextAdventure.csprojResolveAssemblyReference.cache
+C:\Users\Games\Desktop\TextAdventure2\TextAdventure\obj\Debug\TextAdventure.exe
+C:\Users\Games\Desktop\TextAdventure2\TextAdventure\obj\Debug\TextAdventure.pdb
