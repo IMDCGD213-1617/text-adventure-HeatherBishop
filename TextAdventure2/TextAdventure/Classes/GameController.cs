@@ -15,8 +15,14 @@ namespace TextAdventure
         {
             Console.Clear();
             Console.WriteLine();
-            Console.WriteLine(TextUtilities.WordWrap(("*** Welcome to my Text Adventure! ***\n\n\n"), Console.WindowWidth));
+            Console.WriteLine(TextUtilities.WordWrap(("*** Welcome to Working Late! ***\n\n\n"), Console.WindowWidth));
 
+
+            Console.WriteLine("\nYou are working late finishing off some paperwork.");
+            Console.WriteLine("\nMost of your collegues have already left.");
+            Console.WriteLine("\nUnfortunately you're pen has run out, you have no stapler or envelopes.");
+            Console.WriteLine("\nTo finish you're work before the Boss gets back in the morning,");
+            Console.WriteLine("\nAquire the items BLACK PEN, STAPLER, MANILLA ENVELOPE.");
             Console.WriteLine("\nNOTE: If you are stuck at any time, type HELP to see a list of commands.");
             Console.WriteLine("\nPress any key to begin.");
 
@@ -66,7 +72,7 @@ namespace TextAdventure
         {
 
 
-            if (Level.Room[0, 0].GetItem("Cauldron") != null && Level.Room[0, 0].GetItem("Sword") != null)
+            if (Level.Room[0, 0].GetItem("Black Pen") != null && Level.Room[0, 0].GetItem("Manilla Envelope") != null && Level.Room[0, 0].GetItem("Black Pen") != null) 
             {
                 EndGame("Congratulations, you have aquired all of the treasures and completed your quest!");
             }
@@ -75,19 +81,21 @@ namespace TextAdventure
             //if the 4 treatures are in the house.
 
             //end game
-            //if player has the axe
-            if (Player.GetInventoryItem("Axe") != null)
+            //if player has the basement key
+            if (Player.GetInventoryItem("Basement Key") != null)
             {
-                //add an exit to the south so player can now enter the castle
-                Level.Room[1, 0].AddExit(Direction.South);
+                //add an exit to the south so player can now enter the basement
+                Level.Room[4, 1].AddExit(Direction.South);
 
                 //change the description to show something has changed/access the castle
                 Level.Room[1, 0].RoomDescription = "You have entered the castle";
             }
+            
+            //add conditions for items that can only be obtained if another item is in the inventory.
 
             if (Player.Moves > 25)
             {
-                EndGame("You have run out of moves, the Milesians have arrived and slaughtered you're people.");
+                EndGame("You have run out of moves. Its the morning, you're Boss has arrived. \nHaving not completed your work he mercilessly fires you.");
             }
         }
 

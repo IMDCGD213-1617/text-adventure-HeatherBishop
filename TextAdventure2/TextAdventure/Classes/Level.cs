@@ -32,7 +32,7 @@ namespace TextAdventure
         private static void BuildLevel()
         {
             //set up grid to contain rooms
-            rooms = new Rooms[7, 3]; //2 rooms x, 2 y = 4 rooms total
+            rooms = new Rooms[6, 3]; //2 rooms x, 2 y = 4 rooms total
 
             //temp variables to contain room/item objects.
             Rooms room;
@@ -42,7 +42,7 @@ namespace TextAdventure
 
             //create the rooms
 
-            #region house 0,0
+            #region Your Office 0,0
             // create new room.
             room = new Rooms();
 
@@ -50,15 +50,29 @@ namespace TextAdventure
             rooms[0, 0] = room;
 
             //Room proerties.
-            room.RoomTitle = "House";
-            room.RoomDescription = "You have entered the house.";
+            room.RoomTitle = "Your Office";
+            room.RoomDescription = "You are in your office, it feels farmilliar. Thats probably because of all the time you spend in here.";
 
             // add an exit using the method, then assign direction.
             room.AddExit(Direction.East); //0,1 LOCATION
-            room.AddExit(Direction.South); // 1,0 Location
-#endregion
 
-            #region forest 0,1
+            //create new item in this room
+            #region item Red Pen
+            item = new Items();
+
+            //set up the item
+            item.ItemTitle = "Red Pen";
+            item.ItemDescription = "You pick up a red pen. George is obsessed with them, he says the colour is more dramatic.";
+
+            //add item to current room
+            room.Items.Add(item);
+
+            #endregion
+
+
+            #endregion
+
+            #region Corridor A 0,1
             //new room
             room = new Rooms();
 
@@ -66,30 +80,19 @@ namespace TextAdventure
             rooms[0, 1] = room;
 
             //Room proerties.
-            room.RoomTitle = "Forest";
-            room.RoomDescription = "You have entered the Forest. The faint sound of dripping water comes from the east.";
+            room.RoomTitle = "Corridor A";
+            room.RoomDescription = "You have entered Corridor A. You can hear people typing furiously on keyboards around you. The overhead light flickers ominously in the next corridor.";
 
             // add an exit using the method, then assign direction.
             room.AddExit(Direction.West); // add west direction to return to original location [0,0]
             room.AddExit(Direction.East); // east direction = 0,2 location
             room.AddExit(Direction.South); //south direction = 1,1 location
 
-            //create new item in this room
-            #region item Sword
-            item = new Items();
 
-            //set up the item
-            item.ItemTitle = "Sword";
-            item.ItemDescription = "You pick up a sword, it is cold to the touch and considerably more heavy than you thought";
-
-            //add item to current room
-            room.Items.Add(item);
 
             #endregion
 
-            #endregion
-
-            #region cave entrance 0,2
+            #region Georges Office 0,2
 
             //new room
             room = new Rooms();
@@ -98,18 +101,31 @@ namespace TextAdventure
             rooms[0, 2] = room;
 
             //Room proerties.
-            room.RoomTitle = "Cave Entrance";
-            room.RoomDescription = "You have arrived at the Cave Entrance. The breeze from inside is cool against your skin.";
+            room.RoomTitle = "Georges' Office";
+            room.RoomDescription = "You have entered Georges' Office. He is desperatly rummaging through draws. Once he notices you he stops, and continues scribbling in blue pen on his paperwork.";
 
             // add an exit using the method, then assign direction.
             room.AddExit(Direction.West); // add west direction to return to original location [0,1]
             
-            room.AddExit(Direction.South); //south direction = 1,2 location
+            
+
+            //create new item in this room
+            #region item Stapler
+            item = new Items();
+
+            //set up the item
+            item.ItemTitle = "Stapler";
+            item.ItemDescription = "You pick up a stapler. Like magic, it actually has staples in it.";
+
+            //add item to current room
+            room.Items.Add(item);
+
+            #endregion
 
 
             #endregion
 
-            #region dense forest 1,0
+            #region Bobs Office 1,0
             //new room
             room = new Rooms();
 
@@ -117,22 +133,22 @@ namespace TextAdventure
             rooms[1, 0] = room;
 
             //Room proerties.
-            room.RoomTitle = "Dense Forest";
-            room.RoomDescription = "You have entered the Dense Forest.";
+            room.RoomTitle = "Bobs Office";
+            room.RoomDescription = "You have entered Bobs Office. Files are scattered across the room. \nPapers detailing employees working hours and availability are visible on the desk.\n You are pretty sure theres a confidentiality issue there, but he seems to know what hes doing so you let it go.";
 
             // add an exit using the method, then assign direction.
-            room.AddExit(Direction.North); // direction = 0,0
+            
             room.AddExit(Direction.East); // direction = 1,1
             room.AddExit(Direction.South); //direction = 2,0
             
 
             //create new item
-            #region item Axe
+            #region item Basement Key
             item = new Items();
 
             //set up the item
-            item.ItemTitle = "Axe";
-            item.ItemDescription = "You pick up an Axe, its blade has recently been sharpened.";
+            item.ItemTitle = "Basement Key";
+            item.ItemDescription = "You pick up the Basement Key.";
             item.Weight = 1;
 
             //add item to current room
@@ -143,7 +159,7 @@ namespace TextAdventure
 
             #endregion
 
-            #region tranquil clearing 1,1
+            #region Corridor B 1,1
             //new room
             room = new Rooms();
 
@@ -151,19 +167,20 @@ namespace TextAdventure
             rooms[1, 1] = room;
 
             //Room proerties.
-            room.RoomTitle = "Tranquil Clearing";
-            room.RoomDescription = "You have entered the Tranquil Clearing.";
+            room.RoomTitle = "Corridor B";
+            room.RoomDescription = "You have entered Corridor B. This section of corridor feels significatly colder than other areas.";
 
             // add an exit using the method, then assign direction.
             room.AddExit(Direction.North); // direction = 0,1
             room.AddExit(Direction.East); // direction = 1,1
+            room.AddExit(Direction.West); // direction = 1,0
             room.AddExit(Direction.South); //direction = 2,0
 
 
 
             #endregion
 
-            #region large cave 1,2
+            #region Sallys Office 1,2
             //new room
             room = new Rooms();
 
@@ -171,32 +188,29 @@ namespace TextAdventure
             rooms[1,2] = room;
 
             //Room proerties.
-            room.RoomTitle = "Large Cave";
-            room.RoomDescription = "You have entered the Large Cave. It is dark and damp, your footsteps echo deafeningly in the silence.";
+            room.RoomTitle = "Sallys Office";
+            room.RoomDescription = "You have entered Sallys Office. Its empty, neatly filed and tidy. Creepy.";
 
-            // add an exit using the method, then assign direction.
-            room.AddExit(Direction.North); // add east direction to return to original location [0,2]
+            // add an exit using the method, then assign direction.           
             room.AddExit(Direction.West); // west direction = 1,1
-            
 
             //create new item
-            #region item Cauldron
+            #region item Paper Clip
             item = new Items();
 
             //set up the item
-            item.ItemTitle = "Cauldron";
-            item.ItemDescription = "You pick up a Cauldron, its smooth and heavy with a strange frothing liquid inside. The smell of sulphur fills the air.";
-            item.Weight = 3;
+            item.ItemTitle = "Paper Clip";
+            item.ItemDescription = "You pick up the Paper Clip. Yep, that will be useful.";
+            item.Weight = 1;
 
             //add item to current room
             room.Items.Add(item);
 
 
             #endregion
-
             #endregion
 
-            #region shallow lake 2,0
+            #region Corridor E 2,0
             //new room
             room = new Rooms();
 
@@ -204,8 +218,8 @@ namespace TextAdventure
             rooms[2, 0] = room;
 
             //Room proerties.
-            room.RoomTitle = "Shallow Lake";
-            room.RoomDescription = "You have arrived at a Shallow Lake. You can see the lake bed beneath the pristine water.";
+            room.RoomTitle = "Corridor E";
+            room.RoomDescription = "You have arrived at a Corridor E. There is an old printer beeping obnoxiously in the corner.";
 
             // add an exit using the method, then assign direction.
             room.AddExit(Direction.North); // direction = 1,0
@@ -215,7 +229,7 @@ namespace TextAdventure
 
             #endregion
 
-            #region sparse forest 2,1
+            #region Corridor C 2,1
             //new room
             room = new Rooms();
 
@@ -223,18 +237,19 @@ namespace TextAdventure
             rooms[2, 1] = room;
 
             //Room proerties.
-            room.RoomTitle = "Sparse Forest";
-            room.RoomDescription = "You have arrived at a Sparse Forest.";
+            room.RoomTitle = "Corridor C";
+            room.RoomDescription = "You have arrived at Corridor C. The smell of food and coffee tempts you to move East.";
 
             // add an exit using the method, then assign direction.
             room.AddExit(Direction.North); // direction = 1,1
             room.AddExit(Direction.East); // direction = 2,2
             room.AddExit(Direction.South); //direction = 3,1
+            room.AddExit(Direction.West); // direction 2,0
 
 
             #endregion
 
-            #region murky lake 2,2
+            #region Kitchen 2,2
             //new room
             room = new Rooms();
 
@@ -242,8 +257,8 @@ namespace TextAdventure
             rooms[2, 2] = room;
 
             //Room proerties.
-            room.RoomTitle = "Murky Lake";
-            room.RoomDescription = "You have arrived at a Murky Lake. Upon closer inspection you recoil - there is something moving down there!";
+            room.RoomTitle = "Kitchen";
+            room.RoomDescription = "You have entered the Kitchen. A fridge, microwave and coffee maker are the only things in here.";
 
             // add an exit using the method, then assign direction.
             room.AddExit(Direction.North); // direction = 1,2
@@ -253,7 +268,7 @@ namespace TextAdventure
 
             #endregion
 
-            #region denser forest 3,0
+            #region Meeting Room 3,0
             //new room
             room = new Rooms();
 
@@ -261,15 +276,32 @@ namespace TextAdventure
             rooms[3, 0] = room;
 
             //Room proerties.
-            room.RoomTitle = "Denser Forest";
-            room.RoomDescription = "This forest is so thick it is impassable.";
+            room.RoomTitle = "Meeting Room";
+            room.RoomDescription = "The Meeting Room is dark and silent.";
 
             // add an exit using the method, then assign direction.
             room.AddExit(Direction.North); // direction = 2,0
             room.AddExit(Direction.East); //direction = 3,1
+
+            //create new item
+            #region item Employee Files
+            item = new Items();
+
+            //set up the item
+            item.ItemTitle = "Employee Files";
+            item.ItemDescription = "You pick up the Employee Files. They are heavier than you expected.";
+            item.Weight = 1;
+
+            //add item to current room
+            room.Items.Add(item);
+
+
             #endregion
 
-            #region blocked forest 3,1
+
+            #endregion
+
+            #region Common Room 3,1
             //new room
             room = new Rooms();
 
@@ -277,18 +309,19 @@ namespace TextAdventure
             rooms[3, 1] = room;
 
             //Room proerties.
-            room.RoomTitle = "Blocked Forest";
-            room.RoomDescription = "You have arrived at Blocked Forest. If only you had an Axe to chop through.";
+            room.RoomTitle = "Common Room";
+            room.RoomDescription = "You have arrived in the Common Room. Staff gather here to take breaks sometimes.";
 
             // add an exit using the method, then assign direction.
             room.AddExit(Direction.North); // direction = 1,0
             room.AddExit(Direction.East); // direction = 2,1
+            room.AddExit(Direction.West);
 
 
 
             #endregion
 
-            #region shallow lake 3,2
+            #region Empty Office 3,2
             //new room
             room = new Rooms();
 
@@ -296,8 +329,8 @@ namespace TextAdventure
             rooms[3, 2] = room;
 
             //Room proerties.
-            room.RoomTitle = "Shallow Lake";
-            room.RoomDescription = "You have arrived at a Shallow Lake. You can see the lake bed beneath the pristine water.";
+            room.RoomTitle = "Empty Office";
+            room.RoomDescription = "You have arrived the Empty Office. The room is stale from disuse.";
 
             // add an exit using the method, then assign direction.
             room.AddExit(Direction.North); // direction = 2,2
@@ -307,7 +340,7 @@ namespace TextAdventure
 
             #endregion
 
-            #region Library 4,0
+            #region Denises' Office 4,0
             //new room
             room = new Rooms();
 
@@ -315,15 +348,15 @@ namespace TextAdventure
             rooms[4, 0] = room;
 
             //Room proerties.
-            room.RoomTitle = "Ballroom";
-            room.RoomDescription = "You have entered the Library.";
+            room.RoomTitle = "Denises' Office";
+            room.RoomDescription = "You have entered Denises' Office.";
 
             // add an exit using the method, then assign direction.
             room.AddExit(Direction.East); // direction = 4,1
-            room.AddExit(Direction.South); //direction = 5,0
+            room.AddExit(Direction.North);
             #endregion
 
-            #region castle 4,1
+            #region Corridor F 4,1
             //new room
             room = new Rooms();
 
@@ -331,18 +364,17 @@ namespace TextAdventure
             rooms[4, 1] = room;
 
             //Room proerties.
-            room.RoomTitle = "Castle";
-            room.RoomDescription = "You have arrived at the Castle.";
+            room.RoomTitle = "Corridor F";
+            room.RoomDescription = "You have Corridor F.";
 
             // add an exit using the method, then assign direction.
             room.AddExit(Direction.North); // direction = 3,1
-            room.AddExit(Direction.East); // direction = 4,2
-            room.AddExit(Direction.South); //direction = 5,1
-
+            room.AddExit(Direction.East); // direction = 4,2            
+            room.AddExit(Direction.West);
 
             #endregion
 
-            #region dining room 4,2
+            #region Tims Office 4,2
             //new room
             room = new Rooms();
 
@@ -350,17 +382,32 @@ namespace TextAdventure
             rooms[4, 2] = room;
 
             //Room proerties.
-            room.RoomTitle = "Dining Room";
-            room.RoomDescription = "You have arrived in the Dining Room.";
+            room.RoomTitle = "Tims Office";
+            room.RoomDescription = "You have arrived in Tims Office.";
 
             // add an exit using the method, then assign direction.
             room.AddExit(Direction.West); // direction = 2,1
-            room.AddExit(Direction.South); //direction = 3,0
+
+            //create new item
+            #region item Paper Clip
+            item = new Items();
+
+            //set up the item
+            item.ItemTitle = "Black Pen";
+            item.ItemDescription = "You pick up the Black Pen. The preferred pen colour of professionals.";
+            item.Weight = 1;
+
+            //add item to current room
+            room.Items.Add(item);
 
 
             #endregion
 
-            #region corridor 5,0
+
+
+            #endregion
+
+            #region Boiler Room 5,0
             //new room
             room = new Rooms();
 
@@ -368,18 +415,18 @@ namespace TextAdventure
             rooms[5, 0] = room;
 
             //Room proerties.
-            room.RoomTitle = "Corridor";
-            room.RoomDescription = "You have arrived in the Corridor, the Red Cap is waiting for you.";
+            room.RoomTitle = "Boiler Room";
+            room.RoomDescription = "You have arrived in the Boiler Room. Its sweltering hot, the furnace roaring to the side of you.";
 
             // add an exit using the method, then assign direction.
-            room.AddExit(Direction.North); // direction = 1,0
+            
             room.AddExit(Direction.East); // direction = 2,1
-            room.AddExit(Direction.South); //direction = 3,0
+            
 
 
             #endregion
 
-            #region entrance hall 5,1
+            #region Basement 5,1
             //new room
             room = new Rooms();
 
@@ -387,8 +434,8 @@ namespace TextAdventure
             rooms[5, 1] = room;
 
             //Room proerties.
-            room.RoomTitle = "Entrance Hall";
-            room.RoomDescription = "You have arrived .";
+            room.RoomTitle = "Basement";
+            room.RoomDescription = "The Basement. You cannot enter without the Basement Key!";
 
             // add an exit using the method, then assign direction.
             room.AddExit(Direction.North); // direction = 4,1
@@ -397,6 +444,53 @@ namespace TextAdventure
 
 
             #endregion
+
+            #region Storage Room 5,2
+            //new room
+            room = new Rooms();
+
+            // assign this room to location 1,0
+            rooms[5, 2] = room;
+
+            //Room proerties.
+            room.RoomTitle = "Storage Room";
+            room.RoomDescription = "You have arrived in the Storage Room. Rows of dusty boxes on shelves obstruct your view.";
+
+            // add an exit using the method, then assign direction.                       
+            room.AddExit(Direction.West); //direction = 5,0
+
+            //create new item
+            #region item Printer Ink
+            item = new Items();
+
+            //set up the item
+            item.ItemTitle = "Printer Ink";
+            item.ItemDescription = "You pick up the Printer Ink.";
+            item.Weight = 1;
+
+            //add item to current room
+            room.Items.Add(item);
+
+
+            #endregion
+
+            //create new item
+            #region item Manilla Envelope
+            item = new Items();
+
+            //set up the item
+            item.ItemTitle = "Manilla Envelope";
+            item.ItemDescription = "You pick up the Manilla Envelope. Unassuming and useful for sending letters.";
+            item.Weight = 1;
+
+            //add item to current room
+            room.Items.Add(item);
+
+
+            #endregion
+
+            #endregion
+
 
             //place the player in the start room
             Player.PosX = 0;

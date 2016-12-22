@@ -46,7 +46,19 @@ namespace TextAdventure
                     Player.GetCurrentRoom().DescribeRoom();
                     break;
 
+                case "examine":
+                    Player.GetCurrentRoom().DescribeRoom();
+                    break;
+
                 case "pickup":
+                    Player.PickUpItem(arguements);
+                    break;
+
+                case "take":
+                    Player.PickUpItem(arguements);
+                    break;
+
+                case "grab":
                     Player.PickUpItem(arguements);
                     break;
 
@@ -61,6 +73,10 @@ namespace TextAdventure
                 case "whereami":
                     Player.GetCurrentRoom().ShowTitle();
                     break;
+                case "location":
+                    Player.GetCurrentRoom().ShowTitle();
+                    break;
+                   
 
                 default:
                     TextBuffer.Add("I don't understand what you mean, type 'help' for some help");
