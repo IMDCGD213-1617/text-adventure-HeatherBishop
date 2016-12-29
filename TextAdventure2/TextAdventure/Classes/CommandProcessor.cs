@@ -8,6 +8,9 @@ namespace TextAdventure
 {
    static class CommandProcessor
     {
+
+
+
         //ProccessPlayerCommand()
         //Take line of text from player
         //break into two sections:
@@ -15,6 +18,8 @@ namespace TextAdventure
         //Arguments
         public static void ProcessPlayerCommand(string line)
         {
+
+
             //text from player, store into variables.
             string command = TextUtilities.ExtractCommand(line.Trim()).Trim().ToLower(); //trims string to avoid command confusion with upper case/spaces
             string arguements = TextUtilities.ExtractArguments(line.Trim()).Trim().ToLower();
@@ -44,6 +49,7 @@ namespace TextAdventure
 
                 case "look":
                     Player.GetCurrentRoom().DescribeRoom();
+                   
                     break;
 
                 case "examine":
@@ -76,7 +82,9 @@ namespace TextAdventure
                 case "location":
                     Player.GetCurrentRoom().ShowTitle();
                     break;
-                   
+                case "coffee":
+                    Level.AmendKitchen();
+                    break;
 
                 default:
                     TextBuffer.Add("I don't understand what you mean, type 'help' for some help");

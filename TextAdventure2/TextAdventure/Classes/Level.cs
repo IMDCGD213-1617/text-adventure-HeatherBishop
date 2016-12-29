@@ -8,6 +8,8 @@ namespace TextAdventure
 {
     static class Level
     {
+
+
         //create rooms grid
         private static Rooms[,] rooms;  //2D array of type room
 
@@ -32,7 +34,7 @@ namespace TextAdventure
         private static void BuildLevel()
         {
             //set up grid to contain rooms
-            rooms = new Rooms[6, 3]; //2 rooms x, 2 y = 4 rooms total
+            rooms = new Rooms[6, 3]; //x, y
 
             //temp variables to contain room/item objects.
             Rooms room;
@@ -81,11 +83,10 @@ namespace TextAdventure
 
             //Room proerties.
             room.RoomTitle = "Corridor A";
-            room.RoomDescription = "You have entered Corridor A. You can hear people typing furiously on keyboards around you. The overhead light flickers ominously in the next corridor.";
+            room.RoomDescription = "You have entered Corridor A. You can hear George scribbling desperastely to the EAST. The overhead light flickers ominously in the next corridor.";
 
             // add an exit using the method, then assign direction.
-            room.AddExit(Direction.West); // add west direction to return to original location [0,0]
-            room.AddExit(Direction.East); // east direction = 0,2 location
+            room.AddExit(Direction.West); // add west direction to return to original location [0,0]            
             room.AddExit(Direction.South); //south direction = 1,1 location
 
 
@@ -104,10 +105,7 @@ namespace TextAdventure
             room.RoomTitle = "Georges' Office";
             room.RoomDescription = "You have entered Georges' Office. He is desperatly rummaging through draws. Once he notices you he stops, and continues scribbling in blue pen on his paperwork.";
 
-            // add an exit using the method, then assign direction.
-            room.AddExit(Direction.West); // add west direction to return to original location [0,1]
-            
-            
+          
 
             //create new item in this room
             #region item Stapler
@@ -117,10 +115,12 @@ namespace TextAdventure
             item.ItemTitle = "Stapler";
             item.ItemDescription = "You pick up a stapler. Like magic, it actually has staples in it.";
 
-            //add item to current room
+            //add item to current room          
+
             room.Items.Add(item);
 
             #endregion
+
 
 
             #endregion
@@ -258,7 +258,7 @@ namespace TextAdventure
 
             //Room proerties.
             room.RoomTitle = "Kitchen";
-            room.RoomDescription = "You have entered the Kitchen. A fridge, microwave and coffee maker are the only things in here.";
+            room.RoomDescription = "You have entered the Kitchen. A fridge, microwave and coffee maker are the only things in here. On the fridge are magnetic letters arranged to spell ECFEOF.";
 
             // add an exit using the method, then assign direction.
             room.AddExit(Direction.North); // direction = 1,2
@@ -316,6 +316,7 @@ namespace TextAdventure
             room.AddExit(Direction.North); // direction = 1,0
             room.AddExit(Direction.East); // direction = 2,1
             room.AddExit(Direction.West);
+            room.AddExit(Direction.South);
 
 
 
@@ -388,20 +389,7 @@ namespace TextAdventure
             // add an exit using the method, then assign direction.
             room.AddExit(Direction.West); // direction = 2,1
 
-            //create new item
-            #region item Paper Clip
-            item = new Items();
-
-            //set up the item
-            item.ItemTitle = "Black Pen";
-            item.ItemDescription = "You pick up the Black Pen. The preferred pen colour of professionals.";
-            item.Weight = 1;
-
-            //add item to current room
-            room.Items.Add(item);
-
-
-            #endregion
+           
 
 
 
@@ -495,6 +483,50 @@ namespace TextAdventure
             //place the player in the start room
             Player.PosX = 0;
             Player.PosY = 0;
+        }
+
+        public static void AmendKitchen()
+        {
+            //if the player is in the kitchen
+            if (Player.PosX == 2 && Player.PosY == 2)
+            {
+                //temp variables to contain room/item objects.
+                Rooms room;
+                Items item;
+
+
+                //new room
+                room = new Rooms();
+
+                // assign this room to location 1,0
+                rooms[2, 2] = room;
+
+                //Room proerties.
+                room.RoomTitle = "Kitchen";
+                room.RoomDescription = "You have entered the Kitchen. A fridge, microwave and coffee maker are the only things in here. On the fridge are magnetic letters arranged to spell COFFEE. The fridge door is now on the jar.";
+
+                // add an exit using the method, then assign direction.
+                room.AddExit(Direction.North); // direction = 1,2
+                room.AddExit(Direction.West); // direction = 2,1
+                room.AddExit(Direction.South); //direction = 3,2
+
+                //add the black pen to the room
+                //create new item
+                #region item Black Pen
+                item = new Items();
+
+                //set up the item
+                item.ItemTitle = "Black Pen";
+                item.ItemDescription = "You pick up the Black Pen. The preferred pen colour of professionals.";
+                item.Weight = 1;
+
+                //add item to current room
+                room.Items.Add(item);
+
+
+                #endregion
+
+            }
         }
     }
 }

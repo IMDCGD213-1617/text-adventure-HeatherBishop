@@ -10,6 +10,10 @@ namespace TextAdventure
                                 // Dont have to make a copy of GameManager in game
                                 //Cannot change anything from another class, but can access methods from this class.
     {
+
+
+
+
         //Public Methods
         public static void ShowTitleScreen() //must be static as well as Class.
         {
@@ -24,6 +28,7 @@ namespace TextAdventure
             Console.WriteLine("\nTo finish you're work before the Boss gets back in the morning,");
             Console.WriteLine("\nAquire the items BLACK PEN, STAPLER, MANILLA ENVELOPE.");
             Console.WriteLine("\nNOTE: If you are stuck at any time, type HELP to see a list of commands.");
+            Console.WriteLine("\nIf there is no text on the screen, type LOOK or EXAMINE.");
             Console.WriteLine("\nPress any key to begin.");
 
             Console.CursorVisible = false;
@@ -65,6 +70,8 @@ namespace TextAdventure
             
         }
 
+
+
         //Apply Rules()
         //checks for conditions being met.
         //adds items/doors/rooms and checks.
@@ -72,23 +79,40 @@ namespace TextAdventure
         {
 
 
+            //if the 4 items are in your office.
+            //end game
             if (Level.Room[0, 0].GetItem("Black Pen") != null && Level.Room[0, 0].GetItem("Manilla Envelope") != null && Level.Room[0, 0].GetItem("Black Pen") != null) 
             {
                 EndGame("Congratulations, you have aquired all of the treasures and completed your quest!");
             }
 
+            //if the player has the red pen 
+            if (Player.GetInventoryItem("red pen") != null)
+            {
+                // add an exit to Georges office.
+                Level.Room[0, 1].AddExit(Direction.East); //add east direction to 0,1 to enter georges office
+                    Level.Room[0,2].AddExit(Direction.West); // add west direction to return to original location [0,1]          
+                Level.Room[0, 2].RoomDescription = "George spots the RED PEN in your hand, and asks if he can have it in exchange for a STAPLER.";
+                //if player puts pen in x 0, y 2
+                if (Player.PosX == 0 && Player.PosY == 2)
+                {
+                    Player.DropItem("red pen");
+                    Level.Room[0, 2].RoomDescription = "Having given George the RED PEN he is now scribbling happily on spreadsheets. He doesnt even look up when you enter the room.";
+                }
+            }
 
-            //if the 4 treatures are in the house.
 
-            //end game
-            //if player has the basement key
-            if (Player.GetInventoryItem("Basement Key") != null)
+            
+
+            
+            //if player has the basement key or paper clip
+            if (Player.GetInventoryItem("Basement Key") != null || Player.GetInventoryItem("Paper Clip") != null)
             {
                 //add an exit to the south so player can now enter the basement
                 Level.Room[4, 1].AddExit(Direction.South);
 
                 //change the description to show something has changed/access the castle
-                Level.Room[1, 0].RoomDescription = "You have entered the castle";
+                Level.Room[5, 1].RoomDescription = "You have entered the basement. The faint smell of damp permiates the air.";
             }
             
             //add conditions for items that can only be obtained if another item is in the inventory.

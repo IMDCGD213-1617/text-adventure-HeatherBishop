@@ -87,19 +87,19 @@ namespace TextAdventure
             switch(direction)
             {
                 case Direction.North:
-                posY--; //decriment to move up in grid
+                posX--; //decriment to move up in grid
                 break;
 
                 case Direction.South:
-                posY++; //incriment to move down in grid
+                posX++; //incriment to move down in grid
                 break;
 
                 case Direction.East:
-                posX++; //incriment to move right in grid
+                posY++; //incriment to move right in grid
                 break;
 
                 case Direction.West:
-                posX--; //incriment to move left in grid
+                posY--; //incriment to move left in grid
                 break;
             }
 
