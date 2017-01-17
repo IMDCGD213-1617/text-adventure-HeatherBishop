@@ -485,6 +485,9 @@ namespace TextAdventure
             Player.PosY = 0;
         }
 
+
+        //run this after the player has figured out to type "COFFEE" in the kitchen.
+        //So that the kitchen changes and now has the BLACK PEN.
         public static void AmendKitchen()
         {
             //if the player is in the kitchen

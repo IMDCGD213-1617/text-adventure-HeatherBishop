@@ -17,7 +17,7 @@ namespace TextAdventure
 
         private static int numMoves = 0;
 
-        private static int weightCapacity = 6;
+        private static int weightCapacity = 4;
 
         #region properties
         public static int PosX
