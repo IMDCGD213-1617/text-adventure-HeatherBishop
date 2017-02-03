@@ -116,7 +116,6 @@ namespace TextAdventure
                 Level.Room[5, 1].RoomDescription = "You have entered the basement. The faint smell of damp permiates the air.";
             }
             
-            //add conditions for items that can only be obtained if another item is in the inventory.
 
             if (Player.Moves > 25)
             {

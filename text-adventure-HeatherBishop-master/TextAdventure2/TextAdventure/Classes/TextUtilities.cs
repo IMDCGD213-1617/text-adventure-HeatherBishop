@@ -39,7 +39,7 @@ namespace TextAdventure
                 //if there was a space in previous line
                 return line.Substring(index + 1, line.Length - index - 1); //(pos of space, +1 to ignore space and start at argument, 
                                                                            //how many characters until the end of the line? 
-                                                                           //Overall length - index)
+                                                                           //Overall length - index) 
 
         }
 
